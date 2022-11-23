@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './App.css';
 import FruitTile from "./Components/fruitTile/FruitTile";
 import Button from "./Components/button/Button";
+import Form from "./Components/form/Form";
 
 
 function App() {
@@ -21,7 +22,7 @@ function App() {
         } else if (event.target.name === "plus") {
             const value = stateFruit.[classNameParent] + 1
             setStateFruit({...stateFruit, [classNameParent]: value})
-        } else if (event.target.name === "reset") {
+        } else if (event.target.name === "reset" || event.target.name === "submit") {
             setStateFruit({aubergine: 0, mais: 0, peper: 0, brocolli: 0})
         }
 
@@ -66,6 +67,11 @@ function App() {
                     clickHandler={handleClick}
                     name="reset">reset</Button>
 
+            <div>
+               <Form
+               fruitState={stateFruit}
+               handleClickFruitForm={handleClick}></Form>
+            </div>
         </>
     );
 }
