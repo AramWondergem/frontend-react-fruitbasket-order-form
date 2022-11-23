@@ -6,7 +6,7 @@ import Form from "./Components/form/Form";
 
 
 function App() {
-
+// State with all the information needed in the page
     const [state, setState] = useState({
         aubergine: 0, mais: 0, peper: 0, brocolli: 0, surname: "",
         lastname: "",
@@ -23,18 +23,19 @@ function App() {
         const vegetableName = event.target.parentElement.id
 
 
-        if (event.target.name === "minus") {
+        if (event.target.name === "minus") { // function if the minus button is clicked
             if (state.[vegetableName] > 0) {
                 const value = state.[vegetableName] - 1
                 setState({...state, [vegetableName]: value})
-
             }
-        } else if (event.target.name === "plus") {
+
+        } else if (event.target.name === "plus") { // function if the plus button is clicked
             const value = (state.[vegetableName] + 1);
             setState({...state, [vegetableName]: value})
 
         } else if (event.target.name === "reset" || event.target.name === "submit") {
-            if (event.target.name === "submit") {
+
+            if (event.target.name === "submit") { // function if the submit button is clicked
                 event.preventDefault()
                 console.log(state)
                 setState({
@@ -47,7 +48,7 @@ function App() {
                     comments: "",
                     termsAndConditions: false
                 })
-            } else {
+            } else { // function if the reset button is clicked
                 setState({...state, aubergine: 0, mais: 0, peper: 0, brocolli: 0})
             }
 
