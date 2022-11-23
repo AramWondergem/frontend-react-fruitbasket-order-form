@@ -1,0 +1,50 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    /*border: black solid 1px;*/
+}
+html {
+    height: 100vh;
+}
+body {
+    height: 100vh;
+}
+
+#root{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+
+}
+
+h1 {
+    margin:30px;
+}
+
+.vegetable-box {
+flex: 0 420px;
+
+    display: flex;
+    justify-content: center;
+    align-self: stretch;
+}
+
+.vegetable-box div{
+    flex: 0 1 300px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+
+}
+
+.reset-button {
+    margin: 20px;
+}
+
+
