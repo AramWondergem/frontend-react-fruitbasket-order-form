@@ -14,3 +14,8 @@ button:hover {
 .plusMinusButton {
     border-radius: 45px;
 }
+
+.submitButton, .reset-button {
+    margin: 20px;
+}
+

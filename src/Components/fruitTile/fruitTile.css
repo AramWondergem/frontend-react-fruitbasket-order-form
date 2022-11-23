@@ -13,3 +13,7 @@ section {
 section .name {
     flex: 0 0 100px;
 }
+
+.fruitTileWithProduct {
+    background-color: lightgreen;
+}

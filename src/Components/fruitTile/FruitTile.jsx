@@ -9,7 +9,8 @@ function FruitTile({fruitEmoticon, fruitName,stateFruit,clickHandler}) {
 
     return (
 
-        <section className={fruitName}>
+        <section id={fruitName} // I use ID to make it possible to find the vegetablename in the click event. This section is the parent of the button. IT is used in the handleClick function on app.js21
+                 className={ stateFruit.[fruitName] > 0 ? `${fruitName} fruitTileWithProduct` : {fruitName}}>
             <p className="name">{fruitEmoticon}  {fruitName} </p>
             <Button
             type="button"
@@ -19,7 +20,9 @@ function FruitTile({fruitEmoticon, fruitName,stateFruit,clickHandler}) {
             <p>{stateFruit.[fruitName]}</p>
             <Button
             type="button"
-            clickHandler={clickHandler}
+            clickHandler={(event) => {
+                clickHandler(event);
+            }}
             className="plusMinusButton"
             name="plus">+</Button>
         </section>

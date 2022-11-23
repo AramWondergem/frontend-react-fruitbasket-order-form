@@ -7,23 +7,50 @@ import Form from "./Components/form/Form";
 
 function App() {
 
-    const [stateFruit, setStateFruit] = useState({aubergine: 0, mais: 0, peper: 0, brocolli: 0})
+    const [state, setState] = useState({
+        aubergine: 0, mais: 0, peper: 0, brocolli: 0, surname: "",
+        lastname: "",
+        age: 0,
+        zipcode: "",
+        frequentie: "everyMonth",
+        deliveryMoment: "evening",
+        comments: "",
+        termsAndConditions: false
+    })
 
-// const {aubergine, mais, peper, brocolli} = stateFruit;
 
     function handleClick(event) {
-        const classNameParent = event.target.parentElement.className
+        const vegetableName = event.target.parentElement.id
+
 
         if (event.target.name === "minus") {
-            if (stateFruit.[classNameParent] > 0) {
-                const value = stateFruit.[classNameParent] - 1
-                setStateFruit({...stateFruit, [classNameParent]: value})
+            if (state.[vegetableName] > 0) {
+                const value = state.[vegetableName] - 1
+                setState({...state, [vegetableName]: value})
+
             }
         } else if (event.target.name === "plus") {
-            const value = stateFruit.[classNameParent] + 1
-            setStateFruit({...stateFruit, [classNameParent]: value})
+            const value = (state.[vegetableName] + 1);
+            setState({...state, [vegetableName]: value})
+
         } else if (event.target.name === "reset" || event.target.name === "submit") {
-            setStateFruit({aubergine: 0, mais: 0, peper: 0, brocolli: 0})
+            if (event.target.name === "submit") {
+                event.preventDefault()
+                console.log(state)
+                setState({
+                    aubergine: 0, mais: 0, peper: 0, brocolli: 0, surname: "",
+                    lastname: "",
+                    age: 0,
+                    zipcode: "",
+                    frequentie: "everyMonth",
+                    deliveryMoment: "evening",
+                    comments: "",
+                    termsAndConditions: false
+                })
+            } else {
+                setState({...state, aubergine: 0, mais: 0, peper: 0, brocolli: 0})
+            }
+
         }
 
     }
@@ -32,45 +59,47 @@ function App() {
     return (
         <>
 
-                <h1>Fruitmand bezorgservice</h1>
-<div className="vegetable-box">
-    <div>
-                <FruitTile
-                    fruitEmoticon="🍆"
-                    fruitName='aubergine'
-                    stateFruit={stateFruit}
-                    setStateFruitFunctin={setStateFruit}
-                    clickHandler={handleClick}/>
+            <h1>Fruitmand bezorgservice</h1>
+            <div className="vegetable-box">
+                <div>
+                    <FruitTile
+                        fruitEmoticon="🍆"
+                        fruitName='aubergine'
+                        stateFruit={state}
+                        clickHandler={handleClick}/>
 
-                <FruitTile
-                    fruitEmoticon="🌽"
-                    fruitName="mais"
-                    stateFruit={stateFruit}
-                    clickHandler={handleClick}/>
+                    <FruitTile
+                        fruitEmoticon="🌽"
+                        fruitName="mais"
+                        stateFruit={state}
+                        clickHandler={handleClick}/>
 
-                <FruitTile
-                    fruitEmoticon="🌶"
-                    fruitName="peper"
-                    stateFruit={stateFruit}
-                    clickHandler={handleClick}/>
+                    <FruitTile
+                        fruitEmoticon="🌶"
+                        fruitName="peper"
+                        stateFruit={state}
+                        clickHandler={handleClick}/>
 
-                <FruitTile
-                    fruitEmoticon="🥦"
-                    fruitName="brocolli"
-                    stateFruit={stateFruit}
-                    clickHandler={handleClick}/>
-    </div>
-</div>
-                <Button
-                    type="button"
-                    className="reset-button"
-                    clickHandler={handleClick}
-                    name="reset">reset</Button>
+                    <FruitTile
+                        fruitEmoticon="🥦"
+                        fruitName="brocolli"
+                        stateFruit={state}
+                        clickHandler={handleClick}/>
+                </div>
+            </div>
+            <Button
+                type="button"
+                className="reset-button"
+                clickHandler={handleClick}
+                name="reset">reset</Button>
 
-            <div>
-               <Form
-               fruitState={stateFruit}
-               handleClickFruitForm={handleClick}></Form>
+            <div className="formwrapper">
+                <div>
+                    <Form
+                        state={state}
+                        clickHandler={handleClick}
+                        setState={setState}></Form>
+                </div>
             </div>
         </>
     );

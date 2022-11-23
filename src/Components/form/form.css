@@ -1,5 +1,18 @@
 form {
+    flex: 1 1;
     display: flex;
     flex-direction: column;
     justify-content: start;
 }
+
+form > * {
+    padding: 5px 0;
+}
+
+form
+
+.radiobutton span{
+    margin: 0 5px;
+}
+
+
