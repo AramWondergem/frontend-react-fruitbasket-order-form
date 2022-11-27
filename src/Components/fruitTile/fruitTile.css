@@ -1,0 +1,20 @@
+section {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 300px;
+    border: green solid 3px;
+    padding: 30px;
+    border-radius: 90px;
+    background-color: lightpink;
+
+}
+
+section .name {
+    flex: 0 0 100px;
+}
+
+.fruitTileWithProduct {
+    background-color: lightgreen;
+}
